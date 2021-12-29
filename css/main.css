@@ -1,1 +1,2 @@
-@import '/css/cmps/app-header.css'
+@import '/css/cmps/app-header.css';
+@import './apps/keep/cmps/note-preview.css';

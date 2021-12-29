@@ -1,0 +1,10 @@
+.note-preview {
+    width: 240px;
+    border: 1px solid #111010;
+    border-radius: 8px;
+    min-height: 100px;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    background-color: rgb(54, 161, 233);
+}

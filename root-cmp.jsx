@@ -1,7 +1,7 @@
 import { AppHeader } from './js/cmps/AppHeader.jsx'
 
 import {Home} from './js/pages/app-home.jsx'
-// import {BookApp} from './pages/BookApp.jsx'
+import {NoteIndex} from './js/apps/keep/pages/note-index.jsx'
 // import {BookDetails} from './pages/BookDetails.jsx'
 // import {BookAddReview} from './pages/BookAddReview.jsx'
 
@@ -18,9 +18,9 @@ export function App() {
                             <main>
                                 <section>
                                    <Switch>
-                                   {/* <Route component={BookAddReview} path="/book/review/:bookId?" />
-                                   <Route component={BookDetails} path="/book/:bookId" />
-                                   <Route component={BookApp} path="/book" /> */}
+                                   {/* {<Route component={BookAddReview} path="/book/review/:bookId?" />
+                                   <Route component={BookDetails} path="/book/:bookId" /> */}
+                                   <Route component={NoteIndex} path="/notes" /> 
                                    <Route component={Home} path="/" />
                                    </Switch>
                                </section>
