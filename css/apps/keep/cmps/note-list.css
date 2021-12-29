@@ -1,0 +1,11 @@
+
+.notes-list{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.notes-list img{
+    cursor: pointer;
+}

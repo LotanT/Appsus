@@ -1,0 +1,10 @@
+.note-bar{
+    display: flex;
+    position:absolute;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.note-bar img{
+    width:20px ;
+}

@@ -1,5 +1,6 @@
 import { NoteText } from './notes-type/note-text.jsx'
 import { NoteToDos } from './notes-type/note-todos.jsx';
+import { NoteImg } from './notes-type/note-img.jsx';
 
 export class NotePreview extends React.Component {
     state = {
@@ -26,7 +27,9 @@ export class NotePreview extends React.Component {
                     return <NoteText {...props} />
                 case 'note-todos':
                     return <NoteToDos {...props} />
-                default:
+                case 'note-img':
+                    return <NoteImg {...props} />
+                    default:
                     return <div>Not Found</div>
             }
 
@@ -34,7 +37,7 @@ export class NotePreview extends React.Component {
 
         return (
             <main>
-                <DynamicCmp note={note} />
+                <DynamicCmp note={note} onRemoveNote={this.props.onRemoveNote}/>
             </main>
         )
     }
