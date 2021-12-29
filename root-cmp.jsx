@@ -1,40 +1,35 @@
-import { AppHeader } from './js/cmps/AppHeader.jsx'
+import { AppHeader } from './js/cmps/AppHeader.jsx';
+import { MailApp } from './js/apps/mail/pages/mail-app.jsx';
 
-import {Home} from './js/pages/app-home.jsx'
+import { Home } from './js/pages/app-home.jsx';
 // import {BookApp} from './pages/BookApp.jsx'
 // import {BookDetails} from './pages/BookDetails.jsx'
 // import {BookAddReview} from './pages/BookAddReview.jsx'
 
-
-const Router = ReactRouterDOM.HashRouter
-const { Route, Switch } = ReactRouterDOM
+const Router = ReactRouterDOM.HashRouter;
+const { Route, Switch } = ReactRouterDOM;
 
 export function App() {
-    return <Router>
-                     <section className="app">
-                        <header>
-                     <AppHeader />
-                        </header>
-                            <main>
-                                <section>
-                                   <Switch>
-                                   {/* <Route component={BookAddReview} path="/book/review/:bookId?" />
-                                   <Route component={BookDetails} path="/book/:bookId" />
-                                   <Route component={BookApp} path="/book" /> */}
-                                   <Route component={Home} path="/" />
-                                   </Switch>
-                               </section>
-                        </main>
-                      </section>
-          </Router>
+  return (
+    <Router>
+      <section className="app">
+        <header>
+          <AppHeader />
+        </header>
+        <main>
+          <section>
+            <Switch>
+              {/* <Route component={BookAddReview} path="/book/review/:bookId?" /> */}
+              {/* <Route component={BookDetails} path="/book/:bookId" /> */}
+              <Route component={MailApp} path="/mail" />
+              <Route component={Home} path="/" />
+            </Switch>
+          </section>
+        </main>
+      </section>
+    </Router>
+  );
 }
-
-
-
-
-
-
-
 
 // Using Class:
 // export class App extends React.Component {
@@ -82,4 +77,3 @@ export function App() {
 
 //     }
 // }
-

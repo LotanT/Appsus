@@ -1,1 +1,3 @@
-@import '/css/cmps/app-header.css'
+@import '/css/cmps/app-header.css';
+@import '/css/apps/mail/mail-list.css';
+@import '/css/apps/mail/mail-preview.css'
