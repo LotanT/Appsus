@@ -1,4 +1,4 @@
-import { bookService } from '../../../services/mail.service.js';
+import { mailService } from '../services/mail.service.js';
 import { MailList } from '../cmps/mail-list.jsx';
 import { MailNav } from '../cmps/mail-nav.jsx';
 
@@ -14,14 +14,11 @@ export class MailApp extends React.Component {
       }
 
       loadMails = () =>{
-        bookService.query().then(mails=>{
+        mailService.query().then(mails=>{
           this.setState({mails})
         })
       }
 
-      // onOpenMail = (mail) =>{
-
-      // }
 
     render() {
       const {mails} = this.state

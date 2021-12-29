@@ -1,4 +1,8 @@
 .mail-list{
-    background-color: rgb(245, 214, 174);
+    background-color: rgb(247, 247, 247);
     width: 80%;
+}
+
+.mail-list>*:first-child{
+    border-top: 1px solid grey;
 }
