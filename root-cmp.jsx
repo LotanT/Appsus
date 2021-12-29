@@ -1,13 +1,11 @@
-import { AppHeader } from './js/cmps/AppHeader.jsx'
-
-import {Home} from './js/pages/app-home.jsx'
+import { AppHeader } from './js/cmps/AppHeader.jsx';
+import { MailApp } from './js/apps/mail/pages/mail-app.jsx';
 import {NoteIndex} from './js/apps/keep/pages/note-index.jsx'
-// import {BookDetails} from './pages/BookDetails.jsx'
-// import {BookAddReview} from './pages/BookAddReview.jsx'
+import { Home } from './js/pages/app-home.jsx';
 
 
-const Router = ReactRouterDOM.HashRouter
-const { Route, Switch } = ReactRouterDOM
+const Router = ReactRouterDOM.HashRouter;
+const { Route, Switch } = ReactRouterDOM;
 
 export function App() {
     return <Router>
@@ -18,8 +16,7 @@ export function App() {
                             <main>
                                 <section>
                                    <Switch>
-                                   {/* {<Route component={BookAddReview} path="/book/review/:bookId?" />
-                                   <Route component={BookDetails} path="/book/:bookId" /> */}
+                                   <Route component={MailApp} path="/mail" />
                                    <Route component={NoteIndex} path="/notes" /> 
                                    <Route component={Home} path="/" />
                                    </Switch>
@@ -27,14 +24,8 @@ export function App() {
                         </main>
                       </section>
           </Router>
+  
 }
-
-
-
-
-
-
-
 
 // Using Class:
 // export class App extends React.Component {
@@ -82,4 +73,3 @@ export function App() {
 
 //     }
 // }
-

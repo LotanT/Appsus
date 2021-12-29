@@ -1,2 +1,8 @@
 @import '/css/cmps/app-header.css';
+
+/* NOTE */
 @import './apps/keep/cmps/note-preview.css';
+
+/* MAIL */
+@import '/css/apps/mail/mail-list.css';
+@import '/css/apps/mail/mail-preview.css'
