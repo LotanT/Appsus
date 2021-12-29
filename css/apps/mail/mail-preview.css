@@ -1,13 +1,21 @@
 .mail-preview{
     border: 1px solid grey;
     display: flex;
-    
-}
-
-.mail-preview>*{
     text-align: center;
+}
+h1, h2, h3, h4{
+    margin: none;
+    padding: none;
+}
+.mail-preview>*{
+    font-size: 1rem;
+    margin:10px 0px 10px 0px;
+ }
+
+.mail-preview>*:first-child{
+   margin-left: 1rem;
 }
 
 .mail-preview>*:not(:last-child){
-    margin-right: 2rem;
+    margin-inline-end:2rem;
 }
