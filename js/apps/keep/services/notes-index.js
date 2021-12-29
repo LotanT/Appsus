@@ -20,7 +20,7 @@ const notes = [
      id: "n102",
      type: "note-img",
      info: {
-     url: "http://some-img/me",
+     url: 'imgs/app/keep/orange.jpg',
      title: "Bobi and Me"
      },
      style: {

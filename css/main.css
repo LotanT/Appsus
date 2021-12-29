@@ -2,6 +2,9 @@
 
 /* NOTE */
 @import './apps/keep/cmps/note-preview.css';
+@import './apps/keep/cmps/note-list.css';
+@import './apps/keep/cmps/note-bar.css';
+@import './apps/keep/cmps/note-add.css';
 
 /* MAIL */
 @import '/css/apps/mail/mail-app.css';

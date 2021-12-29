@@ -5,7 +5,8 @@ const KEY = 'noteDB'
 
 
 export const notesService = {
-    query
+    query,
+    removeNote
   };
 
 
@@ -19,7 +20,6 @@ function query(filterBy = null) {
 
 }
 
-
 function _createNotes() {
     var notes = _loadFromStorage();
     if (!notes || !notes.length) {
@@ -28,6 +28,16 @@ function _createNotes() {
     }
     return notes;
   }
+
+
+  function removeNote(id) {
+    var notes = _loadFromStorage();
+    const noteIdx = notes.findIndex((note) => note.id === id);
+    notes.splice(noteIdx, 1);
+    _saveToStorage(notes);
+    return Promise.resolve(notes);
+  }
+  
 
 function _saveToStorage(notes) {
     storageService.saveToStorage(KEY, notes)

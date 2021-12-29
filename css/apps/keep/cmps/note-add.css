@@ -1,0 +1,18 @@
+.note-add{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    border: 1px solid ;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 5px;
+
+}
+
+.note-add input {
+    border: none;
+    outline: none;
+    font-size: 1em;
+    background-color:rgba(88, 77, 63, 0.082);
+}
