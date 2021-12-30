@@ -1,6 +1,7 @@
 import { NotePreview } from './note-preview.jsx';
 
 import { notesService } from '../services/note.service.js';
+import { Loader } from './Loader.jsx';
 
 
 export class NoteList extends React.Component {
@@ -21,11 +22,11 @@ onRemoveNote =(noteId)=>{
   
 render(){
     const {notes} = this.state
-
+    if (!notes) return <Loader />
     return(
     <div className="notes-list">
         {notes && notes.map(note=>
-            <NotePreview key={note.key} note={note} onRemoveNote={this.onRemoveNote} />)}
+            <NotePreview key={note.id} note={note} onRemoveNote={this.onRemoveNote} />)}
     </div>
 
     )

@@ -1,6 +1,6 @@
 .note-bar{
     display: flex;
-    position:absolute;
+    /* position:absolute; */
     justify-content: flex-start;
     align-items: flex-end;
 }

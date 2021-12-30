@@ -16,3 +16,11 @@
     font-size: 1em;
     background-color:rgba(88, 77, 63, 0.082);
 }
+
+.note-bar-add{
+    display: flex;
+    gap:5px;
+    padding: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

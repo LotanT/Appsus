@@ -5,6 +5,7 @@
 @import './apps/keep/cmps/note-list.css';
 @import './apps/keep/cmps/note-bar.css';
 @import './apps/keep/cmps/note-add.css';
+@import './apps/keep/cmps/note-edit.css';
 
 /* MAIL */
 @import '/css/apps/mail/mail-app.css';

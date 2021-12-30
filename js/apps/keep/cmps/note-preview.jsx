@@ -18,8 +18,7 @@ export class NotePreview extends React.Component {
     render() {
         const { note } = this.state
         const {type} = this.state.note
-        console.log(note)
-        console.log(type)
+
 
         const DynamicCmp = (props) => {
             switch (type) {
@@ -36,9 +35,9 @@ export class NotePreview extends React.Component {
         }
 
         return (
-            <main>
+           
                 <DynamicCmp note={note} onRemoveNote={this.props.onRemoveNote}/>
-            </main>
+            
         )
     }
 

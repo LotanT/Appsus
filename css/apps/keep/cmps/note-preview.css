@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .note-preview {
     width: 240px;
     border: 1px solid #111010;
@@ -17,4 +21,15 @@
     margin: 0 auto;
     border: none;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note-preview li {
+    word-wrap: break-word;
+}
+.note-todo {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+
 }

@@ -6,13 +6,16 @@ export class NoteToDos extends React.Component {
         const {note} = this.props
         return (
             <div className="note-preview">
+                    <h1>{note.info.title}</h1>
+                <section className="note-todo">
                 {todos.map(todo => (
-                    <div key={todo.id}>
+                    <section key={todo.id}>
                     <input type="checkbox"/>
                     <span>{todo.txt}</span>
-                    </div>
+                    </section>
                   )
                 )}
+                </section>
             <NoteBar note={note} onRemoveNote={this.props.onRemoveNote}/>
             </div>
             )

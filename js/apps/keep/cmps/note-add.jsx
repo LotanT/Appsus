@@ -1,10 +1,12 @@
-
+import { utilService } from '../../../services/util.service.js'
+import {notesService} from '../services/note.service.js'
 
 export class NoteAdd extends React.Component {
 
     state = {
         isExpanded: false,
         note: {
+            id: utilService.makeId(),
             type: 'note-txt',
             info: { txt: '', title: '' },
             style: { backgroundColor: '#fff' },
@@ -24,21 +26,36 @@ export class NoteAdd extends React.Component {
         }))
     };
 
+    onSaveNote = () => {
+        console.log('Saving..')
+        const {note} = this.state
+        const {onNoteAdd} = this.props
+        onNoteAdd(note)
+        this.setState({
+            note: {
+              id: utilService.makeId(),
+              type: 'note-txt',
+              info: { txt: '', title: '' },
+              style: { backgroundColor: '#fff' },
+            },
+          });
+          this.setState({ isExpanded: false })
+
+    }
 
 
     render() {
 
         const { isExpanded } = this.state
-        let { type, info, style } = this.state.note
+        let { info } = this.state.note
 
         return (
             <div className="note-add">
-
                 {isExpanded && <input 
                     name="title"
                     type="text"
                     placeholder='Enter Title'
-                    value={info.txt}
+                    value={info.title}
                     onChange={this.handleChange}/>}
 
                 <input onClick={() => this.onExpand(true)}
@@ -48,7 +65,10 @@ export class NoteAdd extends React.Component {
                     value={info.txt}
                     onChange={this.handleChange}
                 />
-
+                {isExpanded &&<div className="note-bar-add">
+                <button className="note-add-submit" onClick={this.onSaveNote}>Submit</button>
+                <button className="note-add-close" onClick={()=>this.onExpand(false)}>Close</button>
+                </div>}
             </div>
         )
     }
