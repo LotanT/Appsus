@@ -1,0 +1,20 @@
+.mail-details{
+    padding-inline-start: 1rem;
+    box-shadow: 0px 0px 1px 0px rgb(100, 100, 100);
+    /* border-style: solid; */
+    background-color: #fff;
+}
+
+.mail-details h1{
+    padding-top: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.mail-details h2{
+    padding-top: 0.5rem;
+}
+
+.mail-details p{
+   margin: 0px;
+   padding: 1rem;
+}

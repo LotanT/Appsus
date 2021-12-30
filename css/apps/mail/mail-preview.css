@@ -1,21 +1,53 @@
-.mail-preview{
-    border: 1px solid grey;
+.mail-preview {
+    border-bottom: 1px solid grey;
     display: flex;
+    height: 38px;
+    cursor: pointer;
+}
+
+h1, h2, h3, h4 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1rem;
+    /* display: inline; */
+}
+
+.mail-preview>* {
+    font-size: 1rem;
+    margin: 10px 0px 10px 0px;
+}
+
+.mail-preview>*:first-child {
+    width: 25%;
     text-align: center;
 }
-h1, h2, h3, h4{
-    margin: none;
-    padding: none;
+.mail-preview>:nth-child(2) {
+    width: 65%;
+    padding-inline-end: 40px;
+    overflow: hidden;
 }
-.mail-preview>*{
-    font-size: 1rem;
-    margin:10px 0px 10px 0px;
- }
+.mail-preview>:nth-child(2)>*:last-child {
+    font-size: 0.9rem;
+    overflow: hidden;
+}
+.mail-preview>:nth-child(2)>*:first-child {
+    display: inline;
+}
+.mail-preview>:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
 
-.mail-preview>*:first-child{
-   margin-left: 1rem;
+/* .mail-preview>*:not(:last-child) {
+    margin-inline-end: 2rem;
+} */
+
+.mail-preview:hover {
+    box-shadow: 0px 0px 8px 0px rgb(100, 100, 100);
 }
 
-.mail-preview>*:not(:last-child){
-    margin-inline-end:2rem;
+.unread {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 2px 0px rgb(100, 100, 100);
 }
+
