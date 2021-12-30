@@ -31,19 +31,19 @@ export class MailApp extends React.Component {
     this.setState({ filterBy }, this.loadMails);
   };
 
-  onDeleteMail = (mail) =>{
-      mailService.deleteMail(mail.id).then(mails=>{
-          this.setState({mails})
-      })
-  }
+  onDeleteMail = (mail) => {
+    mailService.deleteMail(mail.id).then((mails) => {
+      this.setState({ mails });
+    });
+  };
 
   render() {
-    const { mails } = this.state;
-    if (!mails) return <h1>loading...</h1>;
+    const { mails, filterBy } = this.state;
+    if (!mails) return <h1>loading...</h1>; 
     return (
       <section className="mail-app">
         <Route component={ComposeMail} path={`/mail/compose`} />
-        <MailNav onChaingeFilterByType={this.onChaingeFilterByType} />
+        <MailNav mailType={filterBy.mailType} onChaingeFilterByType={this.onChaingeFilterByType} />
         <MailList mails={mails} onDeleteMail={this.onDeleteMail} />
       </section>
     );
