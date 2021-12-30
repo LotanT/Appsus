@@ -5,7 +5,7 @@ export function ComposeMail(props) {
   const goBack = () => {
     props.history.push(`/mail`);
   };
-
+console.log(props.match.params.noteId)
   const onAddMail = (ev) => {
     ev.preventDefault()
     
