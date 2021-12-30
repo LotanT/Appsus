@@ -4,13 +4,8 @@
     justify-content: space-between;
     height: 7vh;
     padding: 0 2rem;
-<<<<<<< HEAD
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgba(192, 192, 192, 0.555);
-=======
-    margin-bottom: 2rem;
-
->>>>>>> ad770066956e565019fbac2cd4a8a6f984b1b5a4
 }
 
 .app-header .main-nav a {
