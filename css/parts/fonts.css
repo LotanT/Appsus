@@ -1,0 +1,9 @@
+/* FONTS */
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(../../assets/fonts/Montserrat-Light.ttf);
+}
+
+html{
+    font-family: Montserrat-Light;
+}
