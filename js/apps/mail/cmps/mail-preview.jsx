@@ -1,6 +1,8 @@
 import { GetDateFormat } from './mail-preview/sentAt-preview.jsx';
 import { mailService } from '../services/mail.service.js';
 
+const { Link } = ReactRouterDOM;
+
 export class MailPreview extends React.Component {
   state = {
     isOpen: false,
@@ -16,6 +18,10 @@ export class MailPreview extends React.Component {
     }
     this.setState({ isOpen: !this.state.isOpen });
   };
+
+  onSendToKeep = () =>{
+
+  }
 
   render() {
     const mail = this.props.mail;
@@ -43,6 +49,9 @@ export class MailPreview extends React.Component {
               {senderName}  {mail.from}
             </h2>
             <p>{mail.body}</p>
+            <Link to={`/notes/${mail.id}`}>
+              <img onClick={this.onSendToKeep} className="keep-transfer" src="../../imgs/app/mail/sticky-note.png" alt="" />
+              </Link>
             <svg
               onClick={() => onDeleteMail(mail)}
               className="trash-icon"

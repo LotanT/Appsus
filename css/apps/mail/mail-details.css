@@ -5,6 +5,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .mail-details h1{
@@ -22,8 +23,15 @@
 }
 
 .mail-details .trash-icon{
-    position: inherit;
-    right: 0px;
-    bottom: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
     cursor: pointer;
+}
+
+.mail-details .keep-transfer{
+    width: 18px;
+    position: absolute;
+    top: 13px;
+    right: 40px
 }

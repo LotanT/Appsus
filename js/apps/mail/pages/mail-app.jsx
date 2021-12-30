@@ -42,7 +42,7 @@ export class MailApp extends React.Component {
     if (!mails) return <h1>loading...</h1>; 
     return (
       <section className="mail-app">
-        <Route component={ComposeMail} path={`/mail/compose`} />
+        <Route component={ComposeMail} path={`/mail/compose/:noteId?`} />
         <MailNav mailType={filterBy.mailType} onChaingeFilterByType={this.onChaingeFilterByType} />
         <MailList mails={mails} onDeleteMail={this.onDeleteMail} />
       </section>
