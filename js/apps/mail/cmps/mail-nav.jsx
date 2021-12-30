@@ -1,17 +1,18 @@
-import { ComposeMail } from './compose-mail.jsx';
 
 
-const {Link, Route} = ReactRouterDOM;
+const { Link } = ReactRouterDOM;
 
-export function MailNav(){
-    return(
-        <section className="mail-nav">
-            <Link to="/mail/compose"><button>compose</button></Link>
-            <Route component={ComposeMail} path={`/mail/compose`} />
-            <div>inbox</div>
-            <div>Strred</div>
-            <div>Sent</div>
-            <div>Draft</div>
-        </section>
-    )
+export function MailNav({onChaingeFilterByType}) {
+  return (
+    <section className="mail-nav">
+      <Link to="/mail/compose">
+        <button>compose</button>
+      </Link>
+      
+      <div onClick={()=>onChaingeFilterByType('inbox')}>inbox</div>
+      <div onClick={()=>onChaingeFilterByType('starred')}>Starred</div>
+      <div onClick={()=>onChaingeFilterByType('sent')}>Sent</div>
+      <div onClick={()=>onChaingeFilterByType('draft')}>Draft</div>
+    </section>
+  );
 }
