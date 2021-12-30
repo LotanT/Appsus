@@ -11,8 +11,6 @@ export class NoteEdit extends React.Component {
     componentDidMount() {
         // const { noteId } = this.props.match.params
         this.loadNote()
-
-
     }
 
     loadNote = () => {

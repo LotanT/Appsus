@@ -14,3 +14,7 @@
 @import '/css/apps/mail/mail-nav.css';
 @import '/css/apps/mail/mail-details.css';
 @import '/css/apps/mail/compose-mail.css';
+
+
+/* FONTS */
+@import'./parts/fonts.css'
