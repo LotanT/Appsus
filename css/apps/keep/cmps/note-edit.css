@@ -8,6 +8,8 @@
 
     flex-direction: column;
     max-width: 600px;
+    min-width: 400px;
+    min-height: 200px;
     border: 1px solid ;
     margin: 20px auto;
     padding: 20px;
@@ -19,9 +21,10 @@
 .note-edit input{
     border: none;
     outline: none;
+    justify-content: center;
     margin: 3px;
     font-size: 1em;
-    background-color: rgba(88, 77, 63, 0.082);
+    background-color: rgba(88, 77, 63, 0.027);
 }
 
 .screen {
@@ -38,4 +41,7 @@
     padding: 10px;
     justify-content: flex-end;
     align-items: flex-end;
+    position: inherit;
+    bottom: 0;
+    right: 1px;
 }

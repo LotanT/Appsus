@@ -6,10 +6,10 @@ export class NoteText extends React.Component {
         const {note} = this.props
         const {txt,title} = this.props.note.info
         return(
-            <div className="note-preview">
+            <div className="note-preview" style={note.style}>
                 <h1>{title}</h1>
                 <p>{txt}</p> 
-                <NoteBar note={note} onRemoveNote={this.props.onRemoveNote}/>
+                <NoteBar note={note} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
             </div>
         )
         

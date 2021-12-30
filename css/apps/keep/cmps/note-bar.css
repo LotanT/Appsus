@@ -1,10 +1,65 @@
 .note-bar{
+    padding-top: 10px;
     display: flex;
     /* position:absolute; */
-    justify-content: flex-start;
-    align-items: flex-end;
+    /* justify-content: flex-start; */
+    /* align-items: flex-end; */
+    /* box-shadow: 0px 0px 3px 0px rgb(100 100 100); */
+    gap:7px;
+
 }
 
 .note-bar img{
     width:20px ;
+    /* padding-bottom: 10px; */
+}
+
+
+.note-bar img:hover{
+    box-shadow: 0px 4px 7px 0px rgb(100 100 100);
+}
+
+.color-picker{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 130px;
+    padding: 10px;
+    gap: 2px;
+    background-color: rgba(170, 147, 147, 0.274);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+    bottom: 30px;
+    left: 10px;
+    visibility:hidden;
+    transition: visibility .2s;
+}
+
+.color-picker-img:hover +.color-picker{
+    visibility: visible;
+}
+.color-picker:hover{
+    visibility:visible;
+
+}
+
+
+.color{
+    padding: 13px;
+}
+
+.white{
+    background-color:#fff8dc;
+}
+
+.green{
+    background-color: #D5ECC2;
+}
+
+.orange{
+    background-color: #FFD3B4;
+}
+
+.red{
+    background-color: #FFAAA7;
+
 }

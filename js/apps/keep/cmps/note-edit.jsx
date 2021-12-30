@@ -43,10 +43,11 @@ export class NoteEdit extends React.Component {
     render() {
         const { note } = this.state
         if (!note) return <Loader />
+        // const {backgroundColor }=this.state.style
         return (
             <React.Fragment>
                 <div className="screen" onClick={this.props.onCloseNote}></div>
-                <div className="note-edit">
+                <div className="note-edit" style={note.style} >
                     <input
                         type="text"
                         name="title"
@@ -62,8 +63,8 @@ export class NoteEdit extends React.Component {
                         onChange={this.handleChange}
                     />
                     <div className="note-editor-bar">
-                    <button className="note-btn-save" onClick={this.onSaveNote}>Save</button>
-                    <button className="note-btn-close" onClick={this.props.onCloseNote}>Close</button>
+                        <button className="note-btn-save" onClick={this.onSaveNote}>Save</button>
+                        <button className="note-btn-close" onClick={this.props.onCloseNote}>Close</button>
                     </div>
                 </div>
             </React.Fragment>

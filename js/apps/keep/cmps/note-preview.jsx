@@ -2,6 +2,9 @@ import { NoteText } from './notes-type/note-text.jsx'
 import { NoteToDos } from './notes-type/note-todos.jsx';
 import { NoteImg } from './notes-type/note-img.jsx';
 
+import { notesService } from '../services/note.service.js';
+
+
 export class NotePreview extends React.Component {
     state = {
         note: this.props.note
@@ -12,6 +15,12 @@ export class NotePreview extends React.Component {
         if (prevProps.note !== this.props.note) {
             this.setState({ note: this.props.note });
         }
+    }
+
+    onChangeColor =(color)=>{
+        const updatedNote = { ...this.state.note, style: { backgroundColor: color } };
+        notesService.onUpdatedNote(updatedNote)
+        this.setState({note:updatedNote})
     }
 
 
@@ -36,7 +45,7 @@ export class NotePreview extends React.Component {
 
         return (
            
-                <DynamicCmp note={note} onRemoveNote={this.props.onRemoveNote}/>
+                <DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
             
         )
     }

@@ -5,7 +5,7 @@ export class NoteToDos extends React.Component {
         const { todos } = this.props.note.info
         const {note} = this.props
         return (
-            <div className="note-preview">
+            <div className="note-preview" style={note.style}>
                     <h1>{note.info.title}</h1>
                 <section className="note-todo">
                 {todos.map(todo => (
@@ -16,7 +16,7 @@ export class NoteToDos extends React.Component {
                   )
                 )}
                 </section>
-            <NoteBar note={note} onRemoveNote={this.props.onRemoveNote}/>
+            <NoteBar note={note} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
             </div>
             )
      }

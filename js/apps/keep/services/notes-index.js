@@ -15,6 +15,9 @@ const notes = [
         info: {
             txt: "Fullstack Me Baby!",
             title: "GoReact"
+        },
+        style: {
+            backgroundColor: "#98DDCA"
         }
     },
     {
@@ -25,7 +28,7 @@ const notes = [
             title: "Bobi and Me"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#FFD3B4"
         }
     },
     {
@@ -38,6 +41,9 @@ const notes = [
                 { txt: "Driving liscence", doneAt: null, id: utilService.makeId() },
                 { txt: "Coding power", doneAt: 187111111, id: utilService.makeId() }
             ]
+        },
+        style: {
+            backgroundColor: "#FFAAA7"
         }
     }
 ];
