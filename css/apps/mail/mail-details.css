@@ -18,3 +18,10 @@
    margin: 0px;
    padding: 1rem;
 }
+
+.mail-details .trash-icon{
+    position: relative;
+    right: 20px;
+    bottom: 30px;
+    float: right;
+}

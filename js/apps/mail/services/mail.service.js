@@ -4,14 +4,14 @@ import { storageService } from '../../../services/storage.service.js';
 export const mailService = {
   query,
   addMail,
-  removeCar,
+  deleteMail,
   addReview,
   setMailRead,
 };
 
 const KEY = 'mailDB';
 const loggedinUser = {
-  email: 'user@appsus.com',
+  email: 'momo@momo.com',
   fullname: 'Mahatma Appsus',
 };
 
@@ -33,26 +33,51 @@ function setMailRead(mailId) {
 }
 
 function _getFilteredMails(mails, filterBy) {
-  //   let { name, maxPrice, minPrice } = filterBy;
-  //   minPrice = minPrice ? minPrice : 0;
-  //   maxPrice = maxPrice ? maxPrice : Infinity;
-  //   return mails.filter((book) => {
-  //     return (
-  //       book.title.toUpperCase().includes(name.toUpperCase()) &&
-  //       book.listPrice.amount >= minPrice &&
-  //       book.listPrice.amount <= maxPrice
-  //     );
-  //   });
+  let { mailType, isRead, search } = filterBy;
+  mails = _getFilteredMailType(mails, mailType);
+  mails = _getFilteredMailIsRead(mails, isRead);
+  return _getFilteredMailSearch(mails, search);
 }
 
-function removeCar(carId) {
+function _getFilteredMailSearch(mails, search) {
+  if (search === '') return mails;
+  mails = mails.filter((mail) =>
+    mail.subject.toUpperCase().includes(search.toUpperCase())
+  );
+  return mails.filter((mail) =>
+    mail.body.toUpperCase().includes(search.toUpperCase())
+  );
+}
+
+function _getFilteredMailIsRead(mails, isRead) {
+  if (isRead === '') return mails;
+  return mails.filter((mail) => mail.isRead);
+}
+
+function _getFilteredMailType(mails, mailType) {
+  switch (mailType) {
+    case 'inbox':
+      return mails.filter((mail) => mail.to === loggedinUser.email);
+    case 'starred':
+      return mails.filter((mail) => mail.isStarred);
+    case 'sent':
+      return mails.filter((mail) => mail.from === loggedinUser.email);
+    case 'draft':
+      return mails.filter((mail) => mail.isDraft);
+    case '':
+      return mails;
+  }
+}
+
+function deleteMail(mailId) {
   let mails = _loadMailsFromStorage();
-  // cars = cars.filter(car => car.id !== carId)
-  // _saveCarsToStorage(cars);
-  // return Promise.resolve()
+  mails = mails.filter((mail) => mail.id !== mailId);
+  _saveMailsToStorage(mails);
+  return Promise.resolve(mails);
 }
 
 function addMail(newMail) {
+  console.log(newMail);
   let mails = _loadMailsFromStorage();
   let mail = {
     id: utilService.makeId(),
@@ -60,14 +85,15 @@ function addMail(newMail) {
     body: newMail.body,
     isRead: newMail.isRead,
     sentAt: newMail.sentAt,
-    from: newMail.from ? newMail.from : loggedinUser.email,
-    to: 'momo@momo.com',
-    isDraft: false,
+    from: loggedinUser.email,
+    to: newMail.to ? newMail.to : loggedinUser.email,
+    isDraft: newMail.isDraft,
+    isStarred: false,
   };
-  mails = [mail, ...mails]
-  console.log(mails)
+  mails = [mail, ...mails];
+  console.log(mails);
   _saveMailsToStorage(mails);
-  return Promise.resolve(mail)
+  return Promise.resolve(mail);
 }
 
 function getMailsById(bookId) {
@@ -77,13 +103,13 @@ function getMailsById(bookId) {
 }
 
 function addReview(bookId, review) {
-  const books = _loadMailsFromStorage();
-  let book = books.find((book) => book.id === bookId);
-  console.log(bookId);
-  if (!book.reviews) book.reviews = [];
-  book.reviews = [review, ...book.reviews];
-  _saveMailsToStorage(books);
-  return Promise.resolve();
+  // const books = _loadMailsFromStorage();
+  // let book = books.find((book) => book.id === bookId);
+  // console.log(bookId);
+  // if (!book.reviews) book.reviews = [];
+  // book.reviews = [review, ...book.reviews];
+  // _saveMailsToStorage(books);
+  // return Promise.resolve();
 }
 
 function _createMails(vendor, speed) {
@@ -99,6 +125,7 @@ function _createMails(vendor, speed) {
         from: 'toto@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
       },
       {
         id: utilService.makeId(),
@@ -109,6 +136,7 @@ function _createMails(vendor, speed) {
         from: 'lolo@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
       },
       {
         id: utilService.makeId(),
@@ -119,6 +147,7 @@ function _createMails(vendor, speed) {
         from: 'silvia@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
       },
       {
         id: utilService.makeId(),
@@ -129,6 +158,7 @@ function _createMails(vendor, speed) {
         from: 'lotan@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
       },
       {
         id: utilService.makeId(),
@@ -139,6 +169,7 @@ function _createMails(vendor, speed) {
         from: 'toto@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
       },
       {
         id: utilService.makeId(),
@@ -149,6 +180,40 @@ function _createMails(vendor, speed) {
         from: 'toto@toto.com',
         to: 'momo@momo.com',
         isDraft: false,
+        isStarred: false,
+      },
+      {
+        body: 'asdfasdf',
+        from: 'asdfkj@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'lotan@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'oferk@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
       },
     ];
   }
