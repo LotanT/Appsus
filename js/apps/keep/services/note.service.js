@@ -53,6 +53,7 @@ function addNote(userNote) {
         id: utilService.makeId()
       }
     });
+    console.log(userNoteEdit)
     userNote.info.todos = userNoteEdit
   }
 

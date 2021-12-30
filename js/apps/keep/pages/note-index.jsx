@@ -28,7 +28,9 @@ export class NoteIndex extends React.Component {
   onCloseNote = () => {
     this.props.history.push('/notes');
     this.loadNotes();
-};
+  };
+
+
 
 
   render() {
@@ -37,12 +39,12 @@ export class NoteIndex extends React.Component {
     const noteId = this.props.match.params.noteId
     return (
       <React.Fragment>
-        <NoteAdd onNoteAdd={this.onNoteAdd} />
-        <hr/>
+        <NoteAdd onChangeColorAdd={this.onChangeColorAdd} onNoteAdd={this.onNoteAdd} />
+        <hr />
         <section className="notes-container">
           <NoteList notes={notes} />
         </section>
-        {noteId && <NoteEdit onCloseNote={this.onCloseNote} noteId={noteId}/>}
+        {noteId && <NoteEdit onCloseNote={this.onCloseNote} noteId={noteId} />}
       </React.Fragment>
     )
   }

@@ -26,8 +26,9 @@ export class NoteBar extends React.Component {
                     <div className="color green" onClick={() => this.props.onChangeColor('#D5ECC2')}></div>
                     <div className="color orange" onClick={() => this.props.onChangeColor('#FFD3B4')}></div>
                     <div className="color red" onClick={() => this.props.onChangeColor('#FFAAA7')}></div>
-
                 </div>
+
+                <Link to={`/mail/compose/${id}`}><img src="imgs/app/keep/email.svg" /></Link>
                 <img title="Delete note" onClick={() => this.props.onRemoveNote(this.props.note.id)} src="imgs/app/keep/trash-can.svg" />
             </section>
         )
