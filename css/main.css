@@ -3,6 +3,10 @@
 /* HOMEPAGE */
 @import './home-page.css';
 
+/* PARTS */
+
+@import '/css/parts/base.css';
+
 /* NOTE */
 @import './apps/keep/cmps/note-preview.css';
 @import './apps/keep/cmps/note-list.css';
@@ -17,6 +21,8 @@
 @import '/css/apps/mail/mail-nav.css';
 @import '/css/apps/mail/mail-details.css';
 @import '/css/apps/mail/compose-mail.css';
+
+
 
 
 /* FONTS */

@@ -11,10 +11,6 @@ export class NoteAddBar extends React.Component {
     }
 
 
-    // onChangeColor = (bool) => {
-    // setState(this.state.isColorBarDisplayed=)
-    // }
-
 
     render() {
         // const { id } = (this.props.note)
