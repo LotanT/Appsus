@@ -40,6 +40,7 @@ export class MailApp extends React.Component {
   render() {
     const { mails, filterBy } = this.state;
     if (!mails) return <h1>loading...</h1>; 
+    console.log(ComposeMail)
     return (
       <section className="mail-app">
         <Route component={ComposeMail} path={`/mail/compose/:noteId?`} />
