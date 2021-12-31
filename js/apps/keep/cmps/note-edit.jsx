@@ -1,5 +1,8 @@
 import { notesService } from "../services/note.service.js";
+import { mailService } from "../../mail/services/mail.service.js";
+import { utilService } from "../../../services/util.service.js";
 import { Loader } from "./Loader.jsx";
+import { NoteAddBar } from "./note-add-bar.jsx";
 
 const { withRouter } = ReactRouterDOM;
 
@@ -9,7 +12,34 @@ export class NoteEdit extends React.Component {
     }
 
     componentDidMount() {
-        // const { noteId } = this.props.match.params
+        const { noteId } = this.props
+        
+        if(noteId){
+            notesService.getNoteById(noteId).then((note)=>{
+                if(!note){
+                    let newNote = ''
+                    mailService.getMailsById(noteId).then(mail=>{
+
+                       console.log(mail)
+                       newNote={
+                               id: mail.id,
+                               type: "note-txt",
+                               isPinned: true,
+                               info: {
+                                   txt:  mail.body,
+                                   title: mail.subject
+                               },
+                               style: {
+                                   backgroundColor: "#98DDCA"
+                               }
+                       }
+                       notesService.addNote(newNote).then(()=>this.setState({note:newNote}))
+                    })
+                }else return
+            })
+
+            
+        }
         this.loadNote()
     }
 
@@ -61,8 +91,7 @@ export class NoteEdit extends React.Component {
                         onChange={this.handleChange}
                     />
                     <div className="note-editor-bar">
-                        <button className="note-btn-save" onClick={this.onSaveNote}>Save</button>
-                        <button className="note-btn-close" onClick={this.props.onCloseNote}>Close</button>
+                        <NoteAddBar isEditor={true} onSaveNote={this.onSaveNote} onCloseNote={this.props.onCloseNote} />
                     </div>
                 </div>
             </React.Fragment>

@@ -2,20 +2,44 @@ import { NoteList } from '../cmps/note-list.jsx'
 import { NoteAdd } from '../cmps/note-add.jsx'
 import { NoteEdit } from '../cmps/note-edit.jsx'
 import { notesService } from '../services/note.service.js'
+import { eventBusService } from "../../../services/event-bus.service.js"
 import { Loader } from '../cmps/Loader.jsx';
 
 export class NoteIndex extends React.Component {
   state = {
     notes: null,
+    search:''
   };
 
-  componentDidMount() {
-    this.loadNotes();
+  removeEventBus = null
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.notes !== this.props.notes) {
+      this.setState({ notes: this.props.notes })
+    }
   }
 
+  componentDidMount() {
+    console.log(this.state)
+    this.loadNotes();
+    this.removeEventBus = eventBusService.on('search', (search) => {
+        this.setState({ search })
+        this.loadNotes()
+
+      })
+    }
+  
+
+  componentWillUnmount() {
+    this.removeEventBus()
+  }
+
+
   loadNotes = () => {
-    notesService.query().then((notes) => {
+    notesService.query(this.state.search).then((notes) => {
       this.setState({ notes })
+      console.log(this.state.notes)
+      this.render()
     })
   };
 
@@ -34,9 +58,9 @@ export class NoteIndex extends React.Component {
 
 
   render() {
-    const { notes } = this.state
+    let { notes } = this.state
     if (!notes) return <Loader />
-    const noteId = this.props.match.params.noteId
+    let noteId = this.props.match.params.noteId
     return (
       <React.Fragment>
         <NoteAdd onChangeColorAdd={this.onChangeColorAdd} onNoteAdd={this.onNoteAdd} />

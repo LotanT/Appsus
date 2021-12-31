@@ -8,7 +8,7 @@ import { notesService } from '../services/note.service.js';
 export class NotePreview extends React.Component {
     state = {
         note: this.props.note
-        
+
     }
 
     componentDidUpdate(prevProps) {
@@ -17,16 +17,16 @@ export class NotePreview extends React.Component {
         }
     }
 
-    onChangeColor =(color)=>{
+    onChangeColor = (color) => {
         const updatedNote = { ...this.state.note, style: { backgroundColor: color } };
         notesService.onUpdatedNote(updatedNote)
-        this.setState({note:updatedNote})
+        this.setState({ note: updatedNote })
     }
 
 
     render() {
         const { note } = this.state
-        const {type} = this.state.note
+        const { type } = this.state.note
 
 
         const DynamicCmp = (props) => {
@@ -37,16 +37,26 @@ export class NotePreview extends React.Component {
                     return <NoteToDos {...props} />
                 case 'note-img':
                     return <NoteImg {...props} />
-                    default:
+                default:
                     return <div>Not Found</div>
             }
 
         }
 
+
         return (
-           
-                <DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
-            
+        // <React.Fragment>
+        // <section className="pinned-list">
+        // {note.isPinned&&<DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>}
+        // </section>
+        //     <hr/>
+        // <section className="not-pinned-list">
+        //     {!note.isPinned&&<DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>}
+        // </section>
+        // </React.Fragment>
+
+        <DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
+
         )
     }
 

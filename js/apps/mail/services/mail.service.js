@@ -7,6 +7,7 @@ export const mailService = {
   deleteMail,
   addReview,
   setMailRead,
+  getMailsById
 };
 
 const KEY = 'mailDB';

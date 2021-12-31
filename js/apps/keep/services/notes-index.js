@@ -23,6 +23,7 @@ const notes = [
     {
         id: "n102",
         type: "note-img",
+        isPinned: true,
         info: {
             url: 'imgs/app/keep/orange.jpg',
             title: "Bobi and Me"
@@ -34,6 +35,7 @@ const notes = [
     {
         id: "n103",
         type: "note-todos",
+        isPinned: false,
         info: {
             title: "My Todo",
             label: "Get my stuff together",

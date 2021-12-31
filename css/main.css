@@ -1,5 +1,8 @@
 @import '/css/cmps/app-header.css';
 
+/* HOMEPAGE */
+@import './home-page.css';
+
 /* NOTE */
 @import './apps/keep/cmps/note-preview.css';
 @import './apps/keep/cmps/note-list.css';

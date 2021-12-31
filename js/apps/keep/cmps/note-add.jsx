@@ -59,7 +59,7 @@ export class NoteAdd extends React.Component {
                 id: utilService.makeId(),
                 type: 'note-txt',
                 info: { url: '', txt: '', title: '', todos: [''] },
-                style: { backgroundColor: '#FFD3B4' },
+                style: { backgroundColor: '#fff' },
             },
         });
         this.setState({ isExpanded: false })
@@ -158,12 +158,10 @@ export class NoteAdd extends React.Component {
 
                 
                 {isExpanded && <div className="note-bar-add">
-                <NoteAddBar note={note} onChangeColor={this.onChangeColorAdd}/>
-                    <button className="note-add-todos" onClick={() => this.onChangeType('note-todos')}>todos</button>
-                    <button className="note-add-img" onClick={() => this.onChangeType('note-img')}>img</button>
-                    <button className="note-add-txt" onClick={() => this.onChangeType('note-txt')}>txt</button>
-                    <button className="note-add-submit" onClick={this.onSaveNote}>Submit</button>
-                    <button className="note-add-close" onClick={() => this.onExpand(false)}>Close</button>
+                <NoteAddBar isEditor={false} note={note} onChangeColor={this.onChangeColorAdd} onChangeType={this.onChangeType} onSaveNote={this.onSaveNote} onExpand={this.onExpand}/>
+
+                    {/* <button className="note-add-submit" onClick={this.onSaveNote}>Submit</button>
+                    <button className="note-add-close" onClick={() => this.onExpand(false)}>Close</button> */}
                 </div>}
             </div>
         )

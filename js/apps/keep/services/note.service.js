@@ -10,7 +10,8 @@ export const notesService = {
   removeNote,
   addNote,
   getNoteById,
-  onUpdatedNote
+  onUpdatedNote,
+  
 };
 
 
@@ -18,9 +19,9 @@ _createNotes()
 
 function query(filterBy = null) {
   const notes = _loadFromStorage()
-  return Promise.resolve(notes)
-  // const filteredBooks = _getFilteredBooks(notes, filterBy)
-  // return Promise.resolve(filteredBooks)
+  if (!filterBy) return Promise.resolve(notes)
+  const filteredNotes = _getFilteredNotes(notes, filterBy)
+  return Promise.resolve(filteredNotes)
 
 }
 
@@ -77,6 +78,12 @@ function onUpdatedNote(updatedNote) {
   _saveToStorage(notes)
 }
 
+function _getFilteredNotes(notes,value) {
+  return  notes.filter(note => {
+      return note.info.title.includes(value)
+  })
+   
+}
 
 function _saveToStorage(notes) {
   storageService.saveToStorage(KEY, notes)
