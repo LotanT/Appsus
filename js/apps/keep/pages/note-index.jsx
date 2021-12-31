@@ -20,7 +20,6 @@ export class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
     this.loadNotes();
     this.removeEventBus = eventBusService.on('search', (search) => {
         this.setState({ search })
