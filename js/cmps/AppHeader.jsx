@@ -49,7 +49,6 @@ class _AppHeader extends React.Component {
           </h1>
 
           {(currPage)&&<div className="search-bar">
-            <img src="imgs/search.svg" />
             <input
               onChange={this.handleChange}
               type="text"
@@ -57,6 +56,7 @@ class _AppHeader extends React.Component {
               value={filterValue}
               placeholder={'Search ' + currPage}
             />
+            <img src="imgs/search.svg" />
           </div>}
 
 

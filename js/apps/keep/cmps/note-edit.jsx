@@ -61,6 +61,11 @@ export class NoteEdit extends React.Component {
     };
 
 
+    onChangeColorEdit =(color)=>{
+        const updatedNote = { ...this.state.note, style: { backgroundColor: color } };
+        this.setState({note:updatedNote})
+    }
+
     onSaveNote=()=>{
         const note = this.state.note
         notesService.onUpdatedNote(note)
@@ -91,7 +96,7 @@ export class NoteEdit extends React.Component {
                         onChange={this.handleChange}
                     />
                     <div className="note-editor-bar">
-                        <NoteAddBar isEditor={true} onSaveNote={this.onSaveNote} onCloseNote={this.props.onCloseNote} />
+                        <NoteAddBar  onChangeColor= {this.onChangeColorEdit} isEditor={true} onSaveNote={this.onSaveNote} onCloseNote={this.props.onCloseNote} />
                     </div>
                 </div>
             </React.Fragment>

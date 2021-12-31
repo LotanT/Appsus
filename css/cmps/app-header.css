@@ -12,7 +12,7 @@
     height: 7vh;
     padding: 0 2rem;
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.555);
+    border-bottom: 1px solid rgba(192, 192, 192, 0.411);
 }
 
 .app-header .main-nav a {
@@ -34,7 +34,7 @@
 
 .app-header h1 {
     display: flex;
-    align-items: center;
+    font-size: 20px;
 }
 
 .app-header img {
@@ -43,6 +43,7 @@
 
 .app-header span {
     margin-left: 20px;
+    /* text-align: left; */
 }
 
 .app-header>*:last-child {
@@ -65,7 +66,7 @@
     position: fixed;
     background-color: white;
     display: flex;
-    right: -50%;
+    right: -300%;
     align-items: center;
     box-shadow: 0px 0px 4px 0px rgb(100, 100, 100);
     border-radius: 5px;
@@ -90,4 +91,27 @@
 
 .main-nav>*:hover {
     background-color: rgb(201, 201, 201);
+}
+
+.search-bar {
+    display: flex;
+    width: 350px;
+    max-width: 350px;
+
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px 0px rgb(100 100 100);
+    position: relative;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 1em;
+    background-color: rgba(92, 86, 78, 0.013);
+    padding: 5px;
+}
+
+.search-bar img {
+    position: inherit;
+    left: 108px;
 }

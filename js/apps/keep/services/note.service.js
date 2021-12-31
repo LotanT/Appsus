@@ -18,6 +18,7 @@ export const notesService = {
 _createNotes()
 
 function query(filterBy = null) {
+  console.log(filterBy)
   const notes = _loadFromStorage()
   if (!filterBy) return Promise.resolve(notes)
   const filteredNotes = _getFilteredNotes(notes, filterBy)
