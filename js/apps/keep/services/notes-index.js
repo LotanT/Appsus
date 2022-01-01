@@ -59,34 +59,75 @@ const notes = [
         style: {
             backgroundColor: "#FFD3B4"
         }
-    },{
-    id: utilService.makeId(),
-    type: "note-txt",
-    isPinned: true,
-    info: {
-        txt: "Toda raba",
-        title: "Shabat Shalom!"
-    },
-    style: {
-        backgroundColor: "#98DDCA"
-    }
-},    {
-    id: utilService.makeId(),
-    type: "note-todos",
-    isPinned: false,
-    info: {
-        title: "Remember Todos!",
-        label: "Get my stuff together",
-        todos: [
-            { txt: "CTRL+S", doneAt: null, id: utilService.makeId() },
-            { txt: "key in Map", doneAt: 187111111, id: utilService.makeId() },
-            { txt: "Eat sometimes", doneAt: 187111111, id: utilService.makeId() }
+    }, {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+            txt: "Toda raba",
+            title: "Shabat Shalom!"
+        },
+        style: {
+            backgroundColor: "#98DDCA"
+        }
+    }, {
+        id: utilService.makeId(),
+        type: "note-todos",
+        isPinned: false,
+        info: {
+            title: "Remember Todos!",
+            label: "Get my stuff together",
+            todos: [
+                { txt: "CTRL+S", doneAt: null, id: utilService.makeId() },
+                { txt: "key in Map", doneAt: 187111111, id: utilService.makeId() },
+                { txt: "Eat sometimes", doneAt: 187111111, id: utilService.makeId() }
 
-        ]
+            ]
+        },
+        style: {
+            backgroundColor: "#FFAAA7"
+        }
     },
-    style: {
-        backgroundColor: "#FFAAA7"
+    
+    {
+        id: utilService.makeId(),
+        type: "note-img",
+        isPinned: false,
+        info: {
+            url: 'https://picsum.photos/id/1084/536/354?grayscale',
+            title: "What"
+        },
+        style: {
+            backgroundColor: "#D5ECC2"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: false,
+        info: {
+            txt: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero',
+            title: "More Lorem facts?"
+        },
+        style: {
+            backgroundColor: "#FDFF8F"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "note-todos",
+        isPinned: false,
+        info: {
+            title: 'My Todos',
+            todos: [
+                { txt: "Driving liscence", doneAt: null, id: "usgNnO" },
+                { txt: "Coding power", doneAt: 187111111, id: "hRxBam" }]
+        },
+        style: {
+            backgroundColor: "#FDFF8F"
+        }
     }
-},
 
 ];
+
+
