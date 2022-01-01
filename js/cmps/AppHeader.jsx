@@ -72,9 +72,9 @@ class _AppHeader extends React.Component {
             <img src="../imgs/app/nav/homepage.png" /><span>Home</span>
           </NavLink>
           {/* <NavLink to="/about">About</NavLink> */}
-          <NavLink onClick={this.closeModal} to="/notes"><img src="../imgs/app/nav/google-keep.png" /><span>Notes</span></NavLink>
-          <NavLink onClick={this.closeModal} to="/mail"><img src="../imgs/app/nav/gmail.png" /><span>Mail</span></NavLink>
-          <NavLink onClick={this.closeModal} to="/book"><img src="../imgs/app/nav/open-book.png" /><span>Our Books</span></NavLink>
+          <NavLink onClick={this.closeModal} to="/notes"><img src="../../imgs/app/nav/google-keep.png" /><span>Notes</span></NavLink>
+          <NavLink onClick={this.closeModal} to="/mail"><img src="../../imgs/app/nav/gmail.png" /><span>Mail</span></NavLink>
+          <NavLink onClick={this.closeModal} to="/book"><img src="../../imgs/app/nav/open-book.png" /><span>Our Books</span></NavLink>
         </nav>
 
       </React.Fragment>
