@@ -69,7 +69,7 @@ class _AppHeader extends React.Component {
         <div onClick={this.closeModal} className={`screen-modal ${activeModal}`}></div>
         <nav className={`main-nav ${activeModal}`}>
           <NavLink onClick={this.closeModal} activeClassName="my-active" exact to="/">
-            <img src="../imgs/app/nav/homepage.png" /><span>Home</span>
+            <img src="../../imgs/app/nav/homepage.png" /><span>Home</span>
           </NavLink>
           {/* <NavLink to="/about">About</NavLink> */}
           <NavLink onClick={this.closeModal} to="/notes"><img src="../../imgs/app/nav/google-keep.png" /><span>Notes</span></NavLink>
