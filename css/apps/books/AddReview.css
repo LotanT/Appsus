@@ -1,0 +1,113 @@
+
+.add-review{
+    position: fixed;
+    left: 25%;
+    top:15%;
+    width: 50%;
+    height: 70%;
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    cursor: initial;
+}
+.add-review >*{
+   max-width: 50%;
+}
+
+.add-review .review-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+    color: white;
+}
+.add-review .review-btn button{
+    border: 0px;
+    color: white;
+    font-family: inherit;
+    font-weight: bold;
+    background-color: rgb(92, 92, 255);
+    padding: 10px ;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px gray;
+}
+
+.add-review .review-btn button:hover{
+    box-shadow: 0px 0px 8px 0px gray;
+}
+
+.star-rating input {
+    display: none;
+}
+.star-rating {
+    /* margin: 50px auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.star-rating label {
+    position: relative;
+    padding: 5px;
+    /* float: right; */
+    font-size: 30px;
+    color: rgb(197, 197, 197)
+}
+.star-rating input:not(:checked) ~ label:hover,
+.star-rating input:not(:checked) ~ label:hover ~ label {
+    color: #ffc107;
+    
+}
+.star-rating input:checked ~ label {
+    color: #ffc107;
+}
+.star-rating .rating-reaction:before {
+    display: inline;
+    width: 100%;
+    height: 20px;
+    float: left;
+    color: #b68800;
+}
+.star-rating #rating-1:checked ~ .rating-reaction:before {
+    content: "I hate it";
+}
+.star-rating #rating-2:checked ~ .rating-reaction:before {
+    content: "I don't like it";
+}
+.star-rating #rating-3:checked ~ .rating-reaction:before {
+    content: "It is good";
+}
+.star-rating #rating-4:checked ~ .rating-reaction:before {
+    content: "I like it";
+}
+.star-rating #rating-5:checked ~ .rating-reaction:before {
+    content: "I love it";
+}
+.star-rating input:checked ~ {
+    border-top: 1px solid #ddd;
+    width: 100%;
+    padding-top: 15px;
+    margin-top: 15px;
+    display: inline-block;
+}
+/* .star-rating form .rating-reaction {
+    font-size: 24px;
+    float: left;
+    text-transform: capitalize;
+} */
+.star-rating form .submit-rating {
+    border: none;
+    outline: none;
+    background: #795548;
+    color: #ffc107;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    cursor: pointer;
+    float: right;
+}
+form .submit-rating:hover {
+    background-color: #333;
+}

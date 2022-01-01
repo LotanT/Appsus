@@ -1,0 +1,75 @@
+.book-details {
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    /* flex-direction: lumn; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.details-description p button{
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: underline;
+    margin: 0px;
+    padding: 5px;
+    border: 0px;
+    cursor: pointer;;
+}
+.details-container{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(250, 234, 209);
+    box-shadow: 0px 0px 8px 0px grey;
+    padding: 20px 10px;
+    height: 400px;
+}
+/* .details-container > *:not(:last-child) {
+    margin-bottom: 1rem;
+} */
+
+.book-details img {
+    width: 40%;
+    max-width: 300px;
+    box-shadow: 0px 0px 4px 0px grey;
+}
+
+.book-details .cheap{
+    color: green;
+}
+.book-details .expensive{
+    color: rgb(255, 0, 13);
+}
+.book-details .review-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    text-align: left;
+}
+.book-details .card-review{
+    border: 1px solid rgb(3, 107, 148);
+    margin-bottom: 10px;
+}
+
+.book-details .card-review .on{
+    color: #ffc107;
+}
+.book-details .card-review .off{
+    color: #b1b1b1;
+}
+
+.book-details .button{
+    box-shadow: 0px 0px 3px 0px grey;
+    width: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgb(209, 212, 250);
+}
+
+.book-details .button:hover{
+    box-shadow: 0px 0px 8px 0px grey;
+}

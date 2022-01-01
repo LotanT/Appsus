@@ -18,18 +18,20 @@ export class MailApp extends React.Component {
       search: '',
     },
   };
-
+  eventBusDelete = null
+  eventBusSearch = null
+  eventBusNew = null
   componentDidMount() {
     this.loadMails();
-    eventBusService.on('delete-mail', this.onDeleteMail);
-    eventBusService.on('search-mail', this.setFilterBySearch);
-    eventBusService.on('new-mail', this.loadMails);
+    this.eventBusDelete = eventBusService.on('delete-mail', this.onDeleteMail);
+    this.eventBusSearch = eventBusService.on('search-mail', this.setFilterBySearch);
+    this.eventBusNew = eventBusService.on('new-mail', this.loadMails);
   }
   
   componentWillUnmount() {
-    eventBusService.on('delete-mail', this.onDeleteMail);
-    eventBusService.on('search-mail', this.setFilterBySearch);
-    eventBusService.on('new-mail', this.loadMails);
+    this.eventBusDelete()
+    this.eventBusSearch()
+    this.eventBusNew()
   }
 
   loadMails = () => {

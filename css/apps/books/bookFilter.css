@@ -1,0 +1,15 @@
+
+.book-filter {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.book-filter input{
+    max-width: 20%;
+}
+
+.book-filter > *:not(:last-child) {
+    /* margin-inline-end: 1rem; */
+}

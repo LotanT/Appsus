@@ -1,0 +1,8 @@
+.tool-bar>*{
+    border: 0px;
+    box-shadow: 0px 0px 3px 0px rgb(100, 100, 100);
+    border-radius: 5px;
+    outline: none;
+    margin-inline-start: 20px;
+    cursor: pointer;
+}

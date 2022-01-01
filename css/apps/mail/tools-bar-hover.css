@@ -1,0 +1,68 @@
+.tools-bar-hover {
+    background-color: rgb(247, 247, 247);
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    z-index: 1;
+    height: 30px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+}
+
+
+
+.mail-container .tools-bar-hover {
+    opacity: 0;
+}
+
+.mail-container:hover .tools-bar-hover {
+    opacity: 1;
+}
+
+.tools-bar-hover .img-container {
+    height: 20px;
+    width: 20px;
+    display: grid;
+    place-content: center;
+}
+
+.tools-bar-hover .img-container img{
+    width: 100%;
+    height: 100%;
+}
+.tools-bar-hover .trash-icon {
+    cursor: pointer;
+}
+
+.tools-bar-hover .keep-transfer {
+    cursor: pointer
+}
+
+.tools-bar-hover .full-screen {
+    /* width: 17px; */
+    /* position: relative;
+    left: 35px;
+    top: 0px; */
+    cursor: pointer;
+}
+
+.tools-bar-hover .img-container img.open-mail {
+    width: 23px;
+    height: 28px;
+    /* position: relative;
+    left: 12px;
+    top: 3px; */
+    
+    cursor: pointer;
+}
+
+.tools-bar-hover .img-container img.close-mail {
+    width: 23px;
+    height: 32px; 
+    position: relative;
+    /* top: 1px; */
+    cursor: pointer;
+}

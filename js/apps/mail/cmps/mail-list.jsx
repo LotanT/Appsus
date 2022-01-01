@@ -7,7 +7,7 @@ export function MailList({mails,onDeleteMail,onFilterByRead,onMarkMailRead,onTog
 
   
   return (
-    <section className="mail-container">
+    <section className="mails-container">
     <section className="tool-bar">
       <select onChange={onFilterByRead} name="read/unread">
         <option value="">Read/Unread</option>

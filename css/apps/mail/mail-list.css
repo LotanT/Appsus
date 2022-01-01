@@ -6,6 +6,11 @@
     flex-direction: column;
 }
 
-.mail-container{
+.mails-container{
     width: 80%;
 }
+
+.mail-container{
+    position: relative;
+}
+

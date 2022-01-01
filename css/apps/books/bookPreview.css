@@ -1,0 +1,32 @@
+.book-preview {
+    cursor: pointer;
+    text-align: center;
+    background-color: rgb(250, 234, 209);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    position: relative;
+    bottom: 3px;
+    color: rgb(31, 29, 29);
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 3px 1px grey  ;
+}
+
+.book-preview:hover{
+    box-shadow: 0px 0px 10px 1px grey  ;
+}
+
+.book-preview img {
+    width: 150px;
+    box-shadow: 0px 0px 3px 1px grey  ;
+    border-radius: 10px;
+    
+}
+
+.book-preview h4{
+    
+    outline: none;
+}

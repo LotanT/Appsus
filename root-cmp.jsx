@@ -2,8 +2,8 @@ import { AppHeader } from './js/cmps/AppHeader.jsx';
 import { MailApp } from './js/apps/mail/pages/mail-app.jsx';
 import {NoteIndex} from './js/apps/keep/pages/note-index.jsx'
 import { Home } from './js/pages/app-home.jsx';
-
-
+import { BookApp } from './js/apps/book/pages/BookApp.jsx';
+import { BookDetails } from './js/apps/book/pages/BookDetails.jsx';
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 
@@ -16,9 +16,11 @@ export function App() {
                             <main>
                                 <section>
                                    <Switch>
-                                   <Route component={MailApp} path="/mail" />
                                    <Route component={NoteIndex} path="/notes/:noteId" /> 
+                                   <Route component={BookDetails} path="/book/:bookId" /> 
+                                   <Route component={MailApp} path="/mail" />
                                    <Route component={NoteIndex} path="/notes" /> 
+                                   <Route component={BookApp} path="/book" />
                                    <Route component={Home} path="/" />
                                    </Switch>
                                </section>
