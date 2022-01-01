@@ -1,8 +1,7 @@
 import { utilService } from '../../../services/util.service.js'
-import { notesService } from '../services/note.service.js'
-import { Loader } from './Loader.jsx';
+
+import { Loader } from './loader.jsx';
 import { NoteAddBar } from './note-add-bar.jsx';
-import { NoteBar } from './note-bar.jsx';
 
 export class NoteAdd extends React.Component {
 
@@ -34,9 +33,7 @@ export class NoteAdd extends React.Component {
             let todoValue = [...this.state.newTodos]
             todoValue[key] = value
             this.setState({ newTodos: todoValue });
-            // this.setState((prevState) => ({
-            //     note: { ...prevState.note, info: { ...prevState.note.info, [field]: todoValue } }
-            // }))
+
 
         } else {
             this.setState((prevState) => ({
@@ -70,7 +67,6 @@ export class NoteAdd extends React.Component {
 
     onChangeType = (type) => {
         this.setState((prevState) => ({ note: { ...prevState.note, type } }));
-        // this.setState({ ...this.state.note,note: { type:val } })
 
     }
 
@@ -102,9 +98,7 @@ export class NoteAdd extends React.Component {
 
     addToDo = () => {
         this.setState((prevState) => ({ numOfTodos: prevState.numOfTodos + 1 }));
-        // this.setState((prevState) => ({note: { ...prevState.note,info: { ...prevState.note.info, todos:[{...prevState.note.todos}," "] }}}))
-        // this.setState((prevState) => ({ ...prevState.note.info, todos:[{...prevState.note.info.todos}," "] }))
-        // this.setState((prevState) => ({note.todos:[{...prevState.note.todos},' '] }))
+
         this.setState((prevState) => ({ newTodos: [...prevState.newTodos, ''] }));
     }
 
@@ -159,9 +153,6 @@ export class NoteAdd extends React.Component {
                 
                 {isExpanded && <div className="note-bar-add">
                 <NoteAddBar isEditor={false} note={note} onChangeColor={this.onChangeColorAdd} onChangeType={this.onChangeType} onSaveNote={this.onSaveNote} onExpand={this.onExpand}/>
-
-                    {/* <button className="note-add-submit" onClick={this.onSaveNote}>Submit</button>
-                    <button className="note-add-close" onClick={() => this.onExpand(false)}>Close</button> */}
                 </div>}
             </div>
         )

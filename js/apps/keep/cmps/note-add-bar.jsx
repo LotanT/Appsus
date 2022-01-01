@@ -1,6 +1,5 @@
 import { Loader } from "./Loader.jsx"
 
-const { Link } = ReactRouterDOM
 
 
 export class NoteAddBar extends React.Component {
@@ -13,7 +12,6 @@ export class NoteAddBar extends React.Component {
 
 
     render() {
-        // const { id } = (this.props.note)
         const { colors } = this.state
         if (!colors) return <Loader />
         console.log(colors)
