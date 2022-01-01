@@ -1,30 +1,29 @@
-@import '/css/cmps/app-header.css';
+@import 'cmps/app-header.css';
 
 /* HOMEPAGE */
-@import './home-page.css';
+@import 'home-page.css';
 
 /* PARTS */
 
 @import '/css/parts/base.css';
 
 /* NOTE */
-@import './apps/keep/cmps/note-preview.css';
-@import './apps/keep/cmps/note-list.css';
-@import './apps/keep/cmps/note-bar.css';
-@import './apps/keep/cmps/note-add.css';
-@import './apps/keep/cmps/note-edit.css';
+@import 'apps/keep/cmps/note-preview.css';
+@import 'apps/keep/cmps/note-list.css';
+@import 'apps/keep/cmps/note-bar.css';
+@import 'apps/keep/cmps/note-add.css';
+@import 'apps/keep/cmps/note-edit.css';
 
 /* MAIL */
-@import '/css/apps/mail/mail-app.css';
-@import '/css/apps/mail/mail-list.css';
-@import '/css/apps/mail/mail-preview.css';
-@import '/css/apps/mail/mail-nav.css';
-@import '/css/apps/mail/mail-details.css';
-@import '/css/apps/mail/compose-mail.css';
-@import '/css/apps/mail/mail-full-screen.css';
+@import 'apps/mail/mail-app.css';
+@import 'apps/mail/mail-list.css';
+@import 'apps/mail/mail-preview.css';
+@import 'apps/mail/mail-nav.css';
+@import 'apps/mail/mail-details.css';
+@import 'apps/mail/compose-mail.css';
 
 
 
 
 /* FONTS */
-@import'./parts/fonts.css'
+@import'parts/fonts.css'
