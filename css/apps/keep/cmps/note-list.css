@@ -4,15 +4,22 @@
     gap: 20px;
     flex-wrap: wrap;
     align-items: flex-start;
+    margin-top: 20px;
+
     
 }
 
-.notes-list img{
-    cursor: pointer;
-}
 .notes-container{
     padding-top: 10px;
     background-color: #f6f2d46e;
     height: 90vh;
 }
 
+.note-list-title{
+    color: #4b4f53;
+padding-bottom: 30px;
+}
+
+.note-list-second-title, h2  {
+  margin-top: 130px;
+}

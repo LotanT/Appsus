@@ -1,10 +1,8 @@
 import { notesService } from "../services/note.service.js";
 import { mailService } from "../../mail/services/mail.service.js";
-import { utilService } from "../../../services/util.service.js";
 import { Loader } from "./Loader.jsx";
 import { NoteAddBar } from "./note-add-bar.jsx";
 
-const { withRouter } = ReactRouterDOM;
 
 export class NoteEdit extends React.Component {
     state = {
@@ -76,7 +74,6 @@ export class NoteEdit extends React.Component {
     render() {
         const { note } = this.state
         if (!note) return <Loader />
-        // const {backgroundColor }=this.state.style
         return (
             <React.Fragment>
                 <div className="screen" onClick={this.props.onCloseNote}></div>

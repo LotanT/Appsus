@@ -16,7 +16,7 @@ export class NoteToDos extends React.Component {
                     
                   )
                 )}
-            <NoteBar note={note} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
+            <NoteBar note={note} onPinNote={this.props.onPinNote} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
             </div>
             )
      }

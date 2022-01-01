@@ -45,18 +45,7 @@ export class NotePreview extends React.Component {
 
 
         return (
-        // <React.Fragment>
-        // <section className="pinned-list">
-        // {note.isPinned&&<DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>}
-        // </section>
-        //     <hr/>
-        // <section className="not-pinned-list">
-        //     {!note.isPinned&&<DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>}
-        // </section>
-        // </React.Fragment>
-
-        <DynamicCmp note={note} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
-
+        <DynamicCmp note={note} onPinNote={this.props.onPinNote} onChangeColor={this.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
         )
     }
 

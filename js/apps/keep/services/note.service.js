@@ -18,7 +18,6 @@ export const notesService = {
 _createNotes()
 
 function query(filterBy = null) {
-  console.log(filterBy)
   const notes = _loadFromStorage()
   if (!filterBy) return Promise.resolve(notes)
   const filteredNotes = _getFilteredNotes(notes, filterBy)
@@ -77,6 +76,7 @@ function onUpdatedNote(updatedNote) {
   let noteIdx = notes.findIndex((note) => note.id === updatedNote.id)
   notes[noteIdx] = updatedNote
   _saveToStorage(notes)
+  return Promise.resolve(notes)
 }
 
 function _getFilteredNotes(notes,value) {

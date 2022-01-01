@@ -9,7 +9,7 @@ export class NoteText extends React.Component {
             <div className="note-preview" style={note.style}>
                 <h1>{title}</h1>
                 <p>{txt}</p> 
-                <NoteBar note={note} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
+                <NoteBar onPinNote={this.props.onPinNote} note={note} onChangeColor={this.props.onChangeColor} onRemoveNote={this.props.onRemoveNote}/>
             </div>
         )
         
