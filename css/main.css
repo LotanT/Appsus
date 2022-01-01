@@ -5,7 +5,7 @@
 
 /* PARTS */
 
-@import '/css/parts/base.css';
+@import 'parts/base.css';
 
 /* NOTE */
 @import 'apps/keep/cmps/note-preview.css';

@@ -9,11 +9,11 @@ class _AppHeader extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.currPage)
+    // console.log(this.state.currPage)
   }
   componentDidUpdate(prevProps){
     if (prevProps.location.pathname.split('/')[1] !== this.props.location.pathname.split('/')[1]) {
-    this.setState({currPage: this.props.location.pathname.split('/')[1]})}
+    this.setState({currPage: this.props.location.pathname.split('/')[1],filterValue: ''})}
     // console.log(this.state.currPage)
 
 
@@ -22,7 +22,8 @@ class _AppHeader extends React.Component {
   handleChange = (ev) => {
     const value = ev.target.value;
     this.setState({ filterValue: value });
-    eventBusService.emit('search', value);
+    if(this.props.location.pathname === '/mail') eventBusService.emit('search-mail', value);
+    else eventBusService.emit('search', value);
   };
 
   toggleModal = () => {

@@ -1,0 +1,53 @@
+.mail-full-screen{
+    padding-inline-start: 1rem;
+    box-shadow: 0px 0px 1px 0px rgb(100, 100, 100);
+    /* border-style: solid; */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    width: 80%;
+    height: 90vh;
+    z-index: 11;
+    font-size: 20px;
+}
+
+.mail-full-screen h1{
+    padding-top: 0.3em;
+    font-size: 1.5em;
+    margin-bottom: 25px;
+}
+
+.mail-full-screen h2{
+    font-size: 1em;
+    padding-top: 0.5em;
+    margin-bottom: 20px;
+}
+
+.mail-full-screen p{
+   margin: 0px;
+   padding: 1em;
+}
+
+.mail-full-screen .trash-icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.mail-full-screen .keep-transfer{
+    width: 18px;
+    position: absolute;
+    top: 13px;
+    right: 40px
+}
+
+.mail-full-screen .small-screen{
+    width: 20px;
+    position: absolute;
+    top: 12px;
+    right: 68px;
+    cursor: pointer;
+}

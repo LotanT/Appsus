@@ -26,11 +26,11 @@
     margin-bottom: 40px;
 }
 .main-container{
-  padding-top: 120px;
+  padding-top: 50px;
 }
 .hero-text h1{
   font-size: 30px;
-  
+  margin-top: 40px;
 }
 .main-container h2{
   padding-bottom: 50px;
@@ -48,7 +48,7 @@
   border: 1px solid rgba(224, 224, 224, 0.185);
   padding: 20px;
   transition: background-color .4s;
-
+  color: white;
 }
 .card:hover{
   transition: background-color .4s;

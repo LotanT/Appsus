@@ -12,18 +12,19 @@ export class MailPreview extends React.Component {
   // const mailContent = mail.body.slice(0,50);
   onMailOpen = () => {
     const mail = this.props.mail
-    if (!mail.isRead) {
-      mailService.setMailRead(mail.id);
+    if (!mail.isRead && !this.state.isOpen) {
+      this.props.onMarkMailRead(mail)
       mail.isRead = true;
     }
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  onSendToKeep = () =>{
-
+  onToggleReadUnread = () =>{
+    
   }
 
   render() {
+    // console.log(this.props)
     const mail = this.props.mail;
     const isOpen = this.state.isOpen;
     if (!mail) return <h1>loading..</h1>;
@@ -49,11 +50,16 @@ export class MailPreview extends React.Component {
               {senderName}  {mail.from}
             </h2>
             <p>{mail.body}</p>
+             {!mail.isRead && <img onClick={() => this.props.onToggleReadUnread(mail)} className="close-mail" src="../../imgs/app/mail/close-mail.png" alt="" />}
+             {mail.isRead && <img onClick={() => this.props.onToggleReadUnread(mail)} className="open-mail" src="../../imgs/app/mail/open-mail.png" alt="" />}
+            <Link to={`/mail/${mail.id}`}>
+              <img className="full-screen" src="../../imgs/app/mail/expand.png" alt="" />
+              </Link>
             <Link to={`/notes/${mail.id}`}>
               <img onClick={this.onSendToKeep} className="keep-transfer" src="../../imgs/app/mail/sticky-note.png" alt="" />
               </Link>
             <svg
-              onClick={() => onDeleteMail(mail)}
+              onClick={() => this.props.onDeleteMail(mail)}
               className="trash-icon"
               fill="#000000"
               xmlns="http://www.w3.org/2000/svg"

@@ -3,11 +3,11 @@ import { storageService } from '../../../services/storage.service.js';
 
 export const mailService = {
   query,
-  addMail,
+  sentMail,
   deleteMail,
-  addReview,
+  toggleReadUnread,
   setMailRead,
-  getMailsById
+  getMailsById,
 };
 
 const KEY = 'mailDB';
@@ -18,19 +18,38 @@ const loggedinUser = {
 
 _createMails();
 
-function query(filterBy = null) {
+function query(filterBy = null, sortBy) {
   const mails = _loadMailsFromStorage();
   if (!filterBy) return Promise.resolve(mails);
-  const filteredMails = _getFilteredMails(mails, filterBy);
-  return Promise.resolve(filteredMails);
+  let filteredMails = _getFilteredMails(mails, filterBy);
+  filteredMails = _getSortedMails(filteredMails,sortBy)
+  return Promise.resolve({filteredMails,mails});
 }
 
 function setMailRead(mailId) {
   let mails = _loadMailsFromStorage();
   let mail = mails.find((mail) => mail.id === mailId);
   mail.isRead = true;
-  console.log(mail);
   _saveMailsToStorage(mails);
+}
+
+function _getSortedMails(mails,sortBy){
+  if(sortBy === '') return mails;
+  if(sortBy === 'date'){
+   return mails.sort((mailA,mailB)=> mailB.sentAt - mailA.sentAt)
+  }
+  // if(sortBy === 'subject') mails.sort((mailA,mailB)=>{
+  //   let a = mailA.subject, b = mailB.subject; 
+  //   console.log(a,b)
+  //   if(b.toUpperCase() > a.toUpperCase()) return -1;
+  //   if(b.toUpperCase() < a.toUpperCase()) return 1;
+  //   return 0;
+  // })
+  return  mails.sort((mailA,mailB)=>{
+    if(mailB.from.toUpperCase() > mailA.from.toUpperCase()) return -1;
+    if(mailB.from.toUpperCase() < mailA.from.toUpperCase()) return 1;
+    return 0;
+  })
 }
 
 function _getFilteredMails(mails, filterBy) {
@@ -42,17 +61,18 @@ function _getFilteredMails(mails, filterBy) {
 
 function _getFilteredMailSearch(mails, search) {
   if (search === '') return mails;
-  mails = mails.filter((mail) =>
-    mail.subject.toUpperCase().includes(search.toUpperCase())
-  );
-  return mails.filter((mail) =>
+  return mails.filter((mail) => {
+    return mail.subject.toUpperCase().includes(search.toUpperCase()) ||
+    mail.from.toUpperCase().includes(search.toUpperCase()) ||
+    mail.to.toUpperCase().includes(search.toUpperCase()) ||
     mail.body.toUpperCase().includes(search.toUpperCase())
-  );
+  });
 }
 
 function _getFilteredMailIsRead(mails, isRead) {
   if (isRead === '') return mails;
-  return mails.filter((mail) => mail.isRead);
+  if (isRead === 'read') return mails.filter((mail) => mail.isRead);
+  else return mails.filter((mail) => !mail.isRead);
 }
 
 function _getFilteredMailType(mails, mailType) {
@@ -77,8 +97,7 @@ function deleteMail(mailId) {
   return Promise.resolve(mails);
 }
 
-function addMail(newMail) {
-  console.log(newMail);
+function sentMail(newMail) {
   let mails = _loadMailsFromStorage();
   let mail = {
     id: utilService.makeId(),
@@ -92,25 +111,21 @@ function addMail(newMail) {
     isStarred: false,
   };
   mails = [mail, ...mails];
-  console.log(mails);
   _saveMailsToStorage(mails);
   return Promise.resolve(mail);
 }
 
-function getMailsById(bookId) {
-  const books = _loadMailsFromStorage();
-  let book = books.find((book) => bookId === book.id);
-  return Promise.resolve(book);
+function getMailsById(mailId) {
+  const mails = _loadMailsFromStorage();
+  let mail = mails.find((mail) => mailId === mail.id);
+  return Promise.resolve(mail);
 }
 
-function addReview(bookId, review) {
-  // const books = _loadMailsFromStorage();
-  // let book = books.find((book) => book.id === bookId);
-  // console.log(bookId);
-  // if (!book.reviews) book.reviews = [];
-  // book.reviews = [review, ...book.reviews];
-  // _saveMailsToStorage(books);
-  // return Promise.resolve();
+function toggleReadUnread (mailId) {
+  const mails = _loadMailsFromStorage()
+  let mail = mails.find((mail) => mailId === mail.id);
+  mail.isRead = !mail.isRead;
+  _saveMailsToStorage(mails)
 }
 
 function _createMails(vendor, speed) {

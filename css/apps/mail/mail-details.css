@@ -35,3 +35,27 @@
     top: 13px;
     right: 40px
 }
+
+.mail-details .full-screen{
+    width: 17px;
+    position: absolute;
+    top: 13px;
+    right: 70px;
+}
+
+.mail-details .open-mail{
+    width: 20px;
+    position: absolute;
+    top: 13px;
+    right: 97px;
+    cursor: pointer;
+}
+
+.mail-details .close-mail{
+    width: 20px;
+    height: 27px;
+    position: absolute;
+    top: 8px;
+    right: 97px;
+    cursor: pointer;
+}
