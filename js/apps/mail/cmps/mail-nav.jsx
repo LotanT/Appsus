@@ -2,7 +2,7 @@
 
 const { Link } = ReactRouterDOM;
 
-export function MailNav({mailType,onChaingeFilterByType}) {
+export function MailNav({mailType,onChaingeFilterByType,unReadCount}) {
   let inbox = ""
   let starred= ""
   let sent= ""
@@ -21,14 +21,14 @@ export function MailNav({mailType,onChaingeFilterByType}) {
       draft = 'active'
       break;
   }
-
+  
   return (
     <section className="mail-nav">
       <Link to="/mail/compose/">
         <img src="https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png"/><span>compose</span>
       </Link>
       
-      <div className={inbox} onClick={()=>onChaingeFilterByType('inbox')}>inbox</div>
+      <div className={`inbox ${inbox}`} onClick={()=>onChaingeFilterByType('inbox')}><span>inbox</span><span>{`${unReadCount}`}</span> </div>
       <div className={starred} onClick={()=>onChaingeFilterByType('starred')}>Starred</div>
       <div className={sent} onClick={()=>onChaingeFilterByType('sent')}>Sent</div>
       <div className={draft} onClick={()=>onChaingeFilterByType('draft')}>Draft</div>
