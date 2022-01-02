@@ -45,7 +45,7 @@ export class MailFullScreen extends React.Component {
           <img
             onClick={() => this.onToggleReadUnread()}
             className="close-mail"
-            src="../../imgs/app/mail/close-mail.png"
+            src="imgs/app/mail/close-mail.png"
             alt=""
           />
         )}
@@ -53,21 +53,21 @@ export class MailFullScreen extends React.Component {
           <img
             onClick={() => this.onToggleReadUnread()}
             className="open-mail"
-            src="../../imgs/app/mail/open-mail.png"
+            src="imgs/app/mail/open-mail.png"
             alt=""
           />
         )}
         <img
           onClick={this.onGoBack}
           className="small-screen"
-          src="../../imgs/app/mail/minimize.png"
+          src="imgs/app/mail/minimize.png"
           alt=""
         />
         <Link to={`/notes/${mail.id}`}>
           <img
             onClick={this.onSendToKeep}
             className="keep-transfer"
-            src="../../imgs/app/mail/sticky-note.png"
+            src="imgs/app/mail/sticky-note.png"
             alt=""
           />
         </Link>

@@ -58,7 +58,7 @@ export class MailPreview extends React.Component {
               <img
                 onClick={() => this.props.onToggleReadUnread(mail)}
                 className="close-mail"
-                src="../../imgs/app/mail/close-mail.png"
+                src="imgs/app/mail/close-mail.png"
                 alt=""
               />
             )}
@@ -66,14 +66,14 @@ export class MailPreview extends React.Component {
               <img
                 onClick={() => this.props.onToggleReadUnread(mail)}
                 className="open-mail"
-                src="../../imgs/app/mail/open-mail.png"
+                src="imgs/app/mail/open-mail.png"
                 alt=""
               />
             )}
             <Link to={`/mail/${mail.id}`}>
               <img
                 className="full-screen"
-                src="../../imgs/app/mail/expand.png"
+                src="imgs/app/mail/expand.png"
                 alt=""
               />
             </Link>
@@ -81,7 +81,7 @@ export class MailPreview extends React.Component {
               <img
                 onClick={this.onSendToKeep}
                 className="keep-transfer"
-                src="../../imgs/app/mail/sticky-note.png"
+                src="imgs/app/mail/sticky-note.png"
                 alt=""
               />
             </Link>
@@ -104,7 +104,7 @@ export class MailPreview extends React.Component {
               <img
                 onClick={() => this.props.onToggleReadUnread(mail)}
                 className="close-mail"
-                src="../../imgs/app/mail/close-mail.png"
+                src="imgs/app/mail/close-mail.png"
                 alt=""
               />
             </div>
@@ -114,7 +114,7 @@ export class MailPreview extends React.Component {
               <img
                 onClick={() => this.props.onToggleReadUnread(mail)}
                 className="open-mail"
-                src="../../imgs/app/mail/open-mail.png"
+                src="imgs/app/mail/open-mail.png"
                 alt=""
               />
             </div>
@@ -123,7 +123,7 @@ export class MailPreview extends React.Component {
             <div className="img-container">
               <img
                 className="full-screen"
-                src="../../imgs/app/mail/expand.png"
+                src="imgs/app/mail/expand.png"
                 alt=""
               />
             </div>
@@ -133,7 +133,7 @@ export class MailPreview extends React.Component {
               <img
                 onClick={this.onSendToKeep}
                 className="keep-transfer"
-                src="../../imgs/app/mail/sticky-note.png"
+                src="imgs/app/mail/sticky-note.png"
                 alt=""
               />
             </div>
