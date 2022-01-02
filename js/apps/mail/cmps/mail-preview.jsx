@@ -8,7 +8,7 @@ export class MailPreview extends React.Component {
     isOpen: false,
   };
   componentDidMount() {}
-  // const mailContent = mail.body.slice(0,50);
+  
   onMailOpen = () => {
     const mail = this.props.mail;
     if (!mail.isRead && !this.state.isOpen) {
@@ -17,24 +17,31 @@ export class MailPreview extends React.Component {
     }
     this.setState({ isOpen: !this.state.isOpen });
   };
-
-  onToggleReadUnread = () => {};
+  
+  onStarred = () =>{
+    const mail = this.props.mail;
+    this.props.onToggleStarred(mail.id)
+    this.state.isOpen = !this.state.isOpen
+  }
 
   render() {
-    // console.log(this.props)
     const mail = this.props.mail;
     const isOpen = this.state.isOpen;
     if (!mail) return <h1>loading..</h1>;
     const senderName = this.props.mail.from.slice(0, mail.from.indexOf('@'));
     const classRead = mail.isRead ? '' : 'unread';
+    const starImg = mail.isStarred ? 'star' : 'star-outline';
     return (
       <section className="mail-container">
         <section
           className={`mail-preview ${classRead}`}
           onClick={() => this.onMailOpen()}
         >
-          <h2>{senderName}</h2>
-          <div>
+          <div className="star">
+          <img onClick={this.onStarred} src={`imgs/app/mail/${starImg}.png`}/>
+          </div>
+          <h2 className='user-sender'>{senderName}</h2>
+          <div className="subject-body">
             <h2>{mail.subject} - </h2>
             <span>{mail.body}</span>
           </div>

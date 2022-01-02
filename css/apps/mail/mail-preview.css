@@ -16,24 +16,34 @@ h1, h2, h3, h4 {
     font-size: 1rem;
     margin: 10px 0px 10px 0px;
 }
-
-.mail-preview>*:first-child {
-    width: 25%;
+.mail-preview .star{
+    width: 12%;
     text-align: center;
+    z-index: 1;
 }
-.mail-preview>:nth-child(2) {
+.mail-preview .star img{
+    height: 100% ;
+}
+.mail-preview .star path{
+    color: gray;
+}
+.mail-preview .user-sender {
+    width: 13%;
+    
+}
+.mail-preview  .subject-body{
     width: 65%;
     padding-inline-end: 40px;
     overflow: hidden;
 }
-.mail-preview>:nth-child(2)>*:last-child {
+.mail-preview .subject-body>*:last-child {
     font-size: 0.9rem;
     overflow: hidden;
 }
-.mail-preview>:nth-child(2)>*:first-child {
+.mail-preview .subject-body>*:first-child {
     display: inline;
 }
-.mail-preview>:nth-child(3) {
+.mail-preview .date {
     width: 10%;
     text-align: right;
     padding-right: 20px;

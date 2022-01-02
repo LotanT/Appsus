@@ -2,7 +2,7 @@ import { MailPreview } from './mail-preview.jsx';
 // import { mailService } from '../services/mail.service.js';
 // import { eventBusService } from '../../../services/event-bus.service.js';
 
-export function MailList({mails,onDeleteMail,onFilterByRead,onMarkMailRead,onToggleReadUnread,onSortBy}) {
+export function MailList({mails,onDeleteMail,onFilterByRead,onMarkMailRead,onToggleReadUnread,onSortBy,onToggleStarred}) {
   
 
   
@@ -29,6 +29,7 @@ export function MailList({mails,onDeleteMail,onFilterByRead,onMarkMailRead,onTog
           onDeleteMail={onDeleteMail}
           onMarkMailRead={onMarkMailRead}
           onToggleReadUnread={onToggleReadUnread}
+          onToggleStarred={onToggleStarred}
         />
       ))}
     </section>

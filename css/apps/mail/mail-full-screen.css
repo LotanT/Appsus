@@ -51,3 +51,20 @@
     right: 68px;
     cursor: pointer;
 }
+
+.mail-full-screen .open-mail{
+    width: 20px;
+    position: absolute;
+    top: 13px;
+    right: 97px;
+    cursor: pointer;
+}
+
+.mail-full-screen .close-mail{
+    width: 20px;
+    height: 27px;
+    position: absolute;
+    top: 8px;
+    right: 97px;
+    cursor: pointer;
+}

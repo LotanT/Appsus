@@ -8,6 +8,7 @@ export const mailService = {
   toggleReadUnread,
   setMailRead,
   getMailsById,
+  toggleStsrred,
 };
 
 const KEY = 'mailDB';
@@ -78,11 +79,17 @@ function _getFilteredMailIsRead(mails, isRead) {
 function _getFilteredMailType(mails, mailType) {
   switch (mailType) {
     case 'inbox':
-      return mails.filter((mail) => mail.to === loggedinUser.email);
+      return mails.filter((mail) =>{
+        return mail.to === loggedinUser.email &&
+        !mail.isDraft
+      });
     case 'starred':
       return mails.filter((mail) => mail.isStarred);
     case 'sent':
-      return mails.filter((mail) => mail.from === loggedinUser.email);
+      return mails.filter((mail) =>{
+        return mail.from === loggedinUser.email &&
+        !mail.isDraft
+      });
     case 'draft':
       return mails.filter((mail) => mail.isDraft);
     case '':
@@ -107,6 +114,8 @@ function sentMail(newMail) {
     sentAt: newMail.sentAt,
     from: loggedinUser.email,
     to: newMail.to ? newMail.to : loggedinUser.email,
+    cc: newMail.cc,
+    bcc: newMail.bcc,
     isDraft: newMail.isDraft,
     isStarred: false,
   };
@@ -128,6 +137,13 @@ function toggleReadUnread (mailId) {
   _saveMailsToStorage(mails)
 }
 
+function toggleStsrred(mailId){
+  const mails = _loadMailsFromStorage()
+  let mail = mails.find((mail) => mailId === mail.id);
+  mail.isStarred = !mail.isStarred;
+  _saveMailsToStorage(mails)
+}
+
 function _createMails(vendor, speed) {
   let mails = _loadMailsFromStorage();
   if (!mails || !mails.length) {
@@ -136,21 +152,38 @@ function _createMails(vendor, speed) {
         id: utilService.makeId(),
         subject: 'why you didnt',
         body: 'Would love ssdf sadfasdf sdf to catch up sometimes',
-        isRead: false,
+        isRead: true,
         sentAt: 1551133930594,
         from: 'toto@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
         isStarred: false,
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'ofek@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
       },
       {
         id: utilService.makeId(),
         subject: 'Miss you!',
         body: 'Would love I thought we are togther sometimes',
-        isRead: false,
+        isRead: true,
         sentAt: 1551133930594,
         from: 'lolo@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
         isStarred: false,
       },
@@ -162,8 +195,10 @@ function _createMails(vendor, speed) {
         sentAt: 1551133930594,
         from: 'silvia@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
-        isStarred: false,
+        isStarred: true,
       },
       {
         id: utilService.makeId(),
@@ -173,6 +208,8 @@ function _createMails(vendor, speed) {
         sentAt: 1551133930594,
         from: 'lotan@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
         isStarred: false,
       },
@@ -182,19 +219,23 @@ function _createMails(vendor, speed) {
         body: 'Would love to catch up sometimes',
         isRead: false,
         sentAt: 1551133930594,
-        from: 'toto@toto.com',
+        from: 'bobo@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
-        isStarred: false,
+        isStarred: true,
       },
       {
         id: utilService.makeId(),
         subject: 'Miss you!',
         body: 'Would fgsd sdfgs sdfg sdfdg sdfg sdfg sdfg sdfg sdfg sdfg sometimes',
-        isRead: false,
+        isRead: true,
         sentAt: 1551133930594,
         from: 'toto@toto.com',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
         isDraft: false,
         isStarred: false,
       },
@@ -208,6 +249,8 @@ function _createMails(vendor, speed) {
         sentAt: 1640866207648,
         subject: 'asdf',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
       },
       {
         body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
@@ -219,10 +262,38 @@ function _createMails(vendor, speed) {
         sentAt: 1640866207648,
         subject: 'asdf',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
       },
       {
         body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
-        from: 'oferk@gmali.com',
+        from: 'jojo@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'roro@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'dodo@gmali.com',
         id: utilService.makeId(),
         isDraft: false,
         isRead: false,
@@ -230,6 +301,99 @@ function _createMails(vendor, speed) {
         sentAt: 1640866207648,
         subject: 'asdf',
         to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'lotan@gmali.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'momo@momo.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'momo@momo.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'momo@momo.com',
+        id: utilService.makeId(),
+        isDraft: false,
+        isRead: false,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'ofek@gmali.com',
+        id: utilService.makeId(),
+        isDraft: true,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'koko@gmali.com',
+        id: utilService.makeId(),
+        isDraft: true,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
+      },
+      {
+        body: 'asdfasdf did didi  sadfklaw sadfalk sdkfalsk jweroidvnwvwp wnpowunvo wieinv spj aij wnihvhw0iw  wd0iifh 0w0dihdf ',
+        from: 'lolo@gmali.com',
+        id: utilService.makeId(),
+        isDraft: true,
+        isRead: true,
+        isStarred: false,
+        sentAt: 1640866207648,
+        subject: 'asdf',
+        to: 'momo@momo.com',
+        cc: '',
+        bcc: '',
       },
     ];
   }

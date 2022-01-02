@@ -1,16 +1,23 @@
 import { mailService } from '../services/mail.service.js';
 import { eventBusService } from '../../../services/event-bus.service.js';
 import { notesService } from '../../keep/services/note.service.js';
+import { utilService } from '../../../services/util.service.js';
 
 export class ComposeMail extends React.Component {
   state = {
     subject: '',
-    body: ''
+    body: '',
+    to: '',
+    cc: '',
+    bcc: '',
   };
+
+  saveInterval = 0;
 
   goBack = () => {
     this.props.history.push(`/mail`);
   };
+
   componentDidMount() {
     if (this.props.match.params.noteId) {
       notesService.getNoteById(this.props.match.params.noteId).then((note) => {
@@ -21,49 +28,68 @@ export class ComposeMail extends React.Component {
         else if(note.type === 'note-todos'){
           body = note.info.todos.map((todo,idx)=>`${idx+1}. ${todo.txt}   `).join('')
         } 
-        console.log(body)
         this.setState({subject,body})
       });
     }
+    this.saveInterval = setInterval(this.onSentMail,10000,null,true)
   }
-  onSentMail = (ev) => {
-    ev.preventDefault();
-
+  componentWillUnmount(){
+    clearInterval(this.saveInterval)
+  }
+  onSentMail = (ev,isDraft = false) => {
+    if(ev) ev.preventDefault();
+    console.log(this.state) 
     const newMail = {
-      subject: ev.target.subject.value,
-      body: ev.target.body.value,
+      subject: this.state.subject,
+      body: this.state.body,
       isRead: true,
       sentAt: Date.now(),
-      to: ev.target.to.value,
-      isDraft: false,
+      to: this.state.to,
+      cc: this.state.cc,
+      bcc: this.state.bcc,
+      isDraft: isDraft,
     };
     mailService.sentMail(newMail);
     eventBusService.emit('new-mail');
-    this.props.history.push(`/mail`);
+    if(!isDraft) this.props.history.push(`/mail`);
   };
 
   setBody = (ev) =>{
     this.setState({body: ev.target.value})
   }
+  setSubject = (ev) =>{
+    this.setState({subject: ev.target.value})
+  }
+  setTo = (ev) =>{
+    this.setState({to: ev.target.value})
+  }
+  setCc = (ev) =>{
+    this.setState({cc: ev.target.value})
+  }
+  setBcc = (ev) =>{
+    this.setState({bcc: ev.target.value})
+  }
+  
+ 
 
   render() {
-    console.log(this.state.body)
+    
     return (
       <form className="compose-mail" onSubmit={this.onSentMail}>
         <div className="head">
           <span>New Message</span>
         </div>
         <div className="to">
-          <input type="text" placeholder="Recipients" id="to" />
+          <input type="text" onChange={this.setTo} placeholder="Recipients" id="to" />
         </div>
         <div className="cc">
-          <input type="text" placeholder="Cc" id="Cc" />
+          <input type="text" onChange={this.setCc} placeholder="Cc" id="cc" />
         </div>
         <div className="bcc">
-          <input type="text" placeholder="Bcc" id="Bcc" />
+          <input type="text" onChange={this.setBcc} placeholder="Bcc" id="bcc" />
         </div>
         <div className="subject">
-          <input type="text" placeholder="Subject" id="subject" defaultValue={this.state.subject} />
+          <input type="text" placeholder="Subject" onChange={this.setTo} id="subject" defaultValue={this.state.subject} />
         </div>
         <div className="body">
           <textarea id="body" name="text-area" onChange={this.setBody} rows="4" cols="50" value={this.state.body}></textarea>

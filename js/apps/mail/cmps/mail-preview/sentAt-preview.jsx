@@ -7,10 +7,10 @@ export function GetDateFormat({sentAt}){
         let min = time.getMinutes(time)
         if(hour<10) hour = '0'+hour;
         if(min<10) min = '0'+min;
-        return <h1>{hour}:{min}</h1>
+        return <h1 className="date">{hour}:{min}</h1>
     }
     const month = time.getMonth()+1
     const day = time.getDay()
     const year = time.getFullYear()%100
-    return <h1>{day}/{month}/{year}</h1>
+    return <h1 className="date">{day}/{month}/{year}</h1>
 }

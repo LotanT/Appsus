@@ -21,11 +21,13 @@ export class MailApp extends React.Component {
   eventBusDelete = null
   eventBusSearch = null
   eventBusNew = null
+  eventBusToggleRead = null
   componentDidMount() {
     this.loadMails();
     this.eventBusDelete = eventBusService.on('delete-mail', this.onDeleteMail);
     this.eventBusSearch = eventBusService.on('search-mail', this.setFilterBySearch);
     this.eventBusNew = eventBusService.on('new-mail', this.loadMails);
+    this.eventBusToggleRead = eventBusService.on("toggle-readunread", this.onToggleReadUnread)
   }
   
   componentWillUnmount() {
@@ -83,6 +85,11 @@ export class MailApp extends React.Component {
     this.loadMails();
   };
 
+  onToggleStarred = (mailId) =>{
+    mailService.toggleStsrred(mailId)
+    this.loadMails();
+  }
+
   render() {
     const { mails, filterBy } = this.state;
     if (!mails) return <h1>loading...</h1>;
@@ -103,6 +110,7 @@ export class MailApp extends React.Component {
           onMarkMailRead={this.onMarkMailRead}
           onToggleReadUnread={this.onToggleReadUnread}
           onSortBy={this.onSortBy}
+          onToggleStarred={this.onToggleStarred}
         />
       </section>
     );
