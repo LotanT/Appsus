@@ -38,7 +38,6 @@ export class ComposeMail extends React.Component {
   }
   onSentMail = (ev,isDraft = false) => {
     if(ev) ev.preventDefault();
-    console.log(this.state) 
     const newMail = {
       subject: this.state.subject,
       body: this.state.body,
